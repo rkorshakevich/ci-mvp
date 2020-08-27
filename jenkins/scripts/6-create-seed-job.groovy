@@ -6,7 +6,7 @@ import hudson.plugins.git.extensions.impl.*
 import jenkins.model.Jenkins
 
 def jobParameters = [
-  name:          'Curl build',
+  name:          'Curl_build',
   description:   'Curl build',
   repository:    'https://github.com/rkorshakevich/ci-mvp.git',
   branch:        'master'
