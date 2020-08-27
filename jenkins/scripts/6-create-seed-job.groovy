@@ -26,9 +26,15 @@ flowDefinition.setLightweight(true)
 
 Jenkins jenkins = Jenkins.getInstance()
 
-def job = new org.jenkinsci.plugins.workflow.job.WorkflowJob(jenkins,jobParameters.name)
-job.definition = flowDefinition
-job.setDescription(jobParameters.description)
+def job = Jenkins.instance.getAllItems(Job.class).find { 
+  it.name == jobParameters.name
+}
 
-jenkins.save()
-jenkins.reload()
+if (!job) }{
+  def job = new org.jenkinsci.plugins.workflow.job.WorkflowJob(jenkins,jobParameters.name)
+  job.definition = flowDefinition
+  job.setDescription(jobParameters.description)
+
+  jenkins.save()
+  jenkins.reload()
+}
