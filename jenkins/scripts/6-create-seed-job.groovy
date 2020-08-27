@@ -30,7 +30,7 @@ def job = Jenkins.instance.getAllItems(Job.class).find {
   it.name == jobParameters.name
 }
 
-if (!job) }{
+if (!job) {
   def job = new org.jenkinsci.plugins.workflow.job.WorkflowJob(jenkins,jobParameters.name)
   job.definition = flowDefinition
   job.setDescription(jobParameters.description)
