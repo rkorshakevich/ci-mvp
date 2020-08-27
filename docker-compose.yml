@@ -1,0 +1,29 @@
+---
+version: "3"
+services:
+  master:
+    build: jenkins
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins-master:/var/jenkins_home
+      - jenkins-shared:/tmp/jenkins_shared
+  buildenv-curl:
+    build: buildenv-curl
+    container_name: buildenv-curl
+    volumes:
+      - jenkins-shared:/tmp/jenkins_shared
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:latest
+    container_name: artifactory
+    ports:
+      - 8081:8081
+      - 8082:8082
+    volumes:
+      - /var/artifactory_home:/var/opt/jfrog/artifactory
+
+volumes:
+  jenkins-shared:
+  jenkins-master:
