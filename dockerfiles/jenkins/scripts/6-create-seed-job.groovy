@@ -15,7 +15,7 @@ def jobParameters = [
 def branchConfig                =   [new BranchSpec(jobParameters.branch)]
 def userConfig                  =   [new UserRemoteConfig(jobParameters.repository, null, null, null)]
 def cleanBeforeCheckOutConfig   =   new CleanBeforeCheckout()
-def sparseCheckoutPathConfig    =   new SparseCheckoutPaths([new SparseCheckoutPath("Jenkinsfile")])
+def sparseCheckoutPathConfig    =   new SparseCheckoutPaths([new SparseCheckoutPath("src/main/groovy/Jenkinsfile.groovy")])
 def cloneConfig                 =   new CloneOption(true, true, null, 3)
 def extensionsConfig            =   [cleanBeforeCheckOutConfig,sparseCheckoutPathConfig,cloneConfig]
 def scm                         =   new GitSCM(userConfig, branchConfig, false, [], null, null, extensionsConfig)
@@ -26,15 +26,15 @@ flowDefinition.setLightweight(true)
 
 Jenkins jenkins = Jenkins.getInstance()
 
-def job = Jenkins.instance.getAllItems(Job.class).find { 
-  it.name == jobParameters.name
-}
+//def existingJob = Jenkins.instance.getAllItems(Job.class).find { 
+//  it.name == jobParameters.name
+//}
 
-if (!job) {
+//if (!existingJob) {
   def job = new org.jenkinsci.plugins.workflow.job.WorkflowJob(jenkins,jobParameters.name)
   job.definition = flowDefinition
   job.setDescription(jobParameters.description)
 
   jenkins.save()
   jenkins.reload()
-}
+//}

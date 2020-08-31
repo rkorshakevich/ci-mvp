@@ -1,0 +1,35 @@
+plugins {
+//    id 'org.sonarqube' version '3.0'
+    id 'groovy'
+    id 'codenarc'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.jenkins-ci.org/releases/' }
+}
+
+dependencies {
+//    codenarc 'org.codenarc:CodeNarc:1.6.1'
+    implementation 'org.codehaus.groovy:groovy-all:2.3.11'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation "com.lesfurets:jenkins-pipeline-unit:1.3"
+}
+
+codenarc {
+    configFile = file('config/codenarc/codenarc.groovy')
+    // sourceSets = [project.sourceSets.main] // run codenarc on production sources only
+    ignoreFailures = false // Let the build finish even though there are code warnings
+    reportFormat = 'html'
+    reportsDir = new File("build/reports/codenarc")
+}
+
+//sonarqube {
+//    properties {
+//        property 'sonar.projectName', 'Jenkinsfile quality gate'
+//        property 'sonar.host.url', 'http://sonarqube:9000'
+//    }
+//}
