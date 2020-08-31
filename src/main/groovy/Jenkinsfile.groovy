@@ -15,7 +15,7 @@ node {
 
     stage('Push to Artifactory') {
         def buildInfo = Artifactory.newBuildInfo()
-        buildInfo.env.capture = true
+        //buildInfo.env.capture = true
 
         sh 'rm -rf build && mkdir -p build && export REV=`git rev-parse HEAD` && cp src/curl build/curl-$REV'
 

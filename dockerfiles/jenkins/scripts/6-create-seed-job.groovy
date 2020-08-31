@@ -20,7 +20,7 @@ def cloneConfig                 =   new CloneOption(true, true, null, 3)
 def extensionsConfig            =   [cleanBeforeCheckOutConfig,sparseCheckoutPathConfig,cloneConfig]
 def scm                         =   new GitSCM(userConfig, branchConfig, false, [], null, null, extensionsConfig)
 
-def flowDefinition = new org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition(scm, "Jenkinsfile")
+def flowDefinition = new org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition(scm, "src/main/groovy/Jenkinsfile.groovy")
 
 flowDefinition.setLightweight(true)
 
