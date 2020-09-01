@@ -31,7 +31,7 @@ jobParameters.each { jobParameter ->
   def extensionsConfig            =   [cleanBeforeCheckOutConfig,sparseCheckoutPathConfig,cloneConfig]
   def scm                         =   new GitSCM(userConfig, branchConfig, false, [], null, null, extensionsConfig)
 
-  def flowDefinition = new org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition(scm, "jobParameter.jenkinsfile")
+  def flowDefinition = new org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition(scm, jobParameter.jenkinsfile)
 
   flowDefinition.setLightweight(true)
 
