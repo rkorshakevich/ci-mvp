@@ -11,7 +11,7 @@ def jobParameters = [
   description:   'Curl build',
   repository:    'https://github.com/rkorshakevich/ci-mvp.git',
   branch:        'master',
-  jenkinsfile	'src/main/groovy/Jenkinsfile.groovy'
+  jenkinsfile:	'src/main/groovy/Jenkinsfile.groovy'
   ],
   [
   name:         'Quality gate',
