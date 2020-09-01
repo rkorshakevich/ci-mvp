@@ -64,3 +64,4 @@ configuration-as-code-groovy
 swarm
 git
 artifactory
+htmlpublisher
