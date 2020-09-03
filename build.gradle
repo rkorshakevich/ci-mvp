@@ -42,3 +42,18 @@ codenarc {
 //        property 'sonar.host.url', 'http://sonarqube:9000'
 //    }
 //}
+
+tasks.register('listSourceSets') {
+  group = 'Help'
+  description = 'Display files in srourceSets'
+
+  doLast {
+    println "sourceSets list:"
+    sourceSets.each {
+        println it
+        it.allSource.each {
+            println it
+        }
+    }
+  }
+}
