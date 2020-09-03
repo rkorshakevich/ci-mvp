@@ -22,7 +22,7 @@ services:
       - 8081:8081
       - 8082:8082
     volumes:
-      - /var/artifactory_home:/var/opt/jfrog/artifactory
+      - artifactory-home:/var/opt/jfrog/artifactory
 #  sonarqube:
 #    image: sonarqube
 #    container_name: sonarqube
@@ -37,6 +37,7 @@ services:
 volumes:
   jenkins-shared:
   jenkins-master:
+  artifactory-home:
 #  sonarqube-conf:
 #  sonarqube-data:
 #  sonarqube-logs:
